@@ -1,0 +1,18 @@
+from moviepy import *
+
+clip = VideoFileClip("marley.MOV")
+clip = clip.resized(clip.size[::-1])
+clip = clip.resized(0.2)
+w , h = clip.size
+print(w)
+print(h)
+text = TextClip(
+    font = "MetalMania-Regular.ttf",
+    text = "marley FRIEND!",
+    font_size = 35,
+    color = (203,82,140),
+)
+text = text.with_position((50,0)).with_duration(2)   
+output = CompositeVideoClip([clip, text])
+output = output.with_speed_scaled(2)
+output.write_gif("marley.gif")
